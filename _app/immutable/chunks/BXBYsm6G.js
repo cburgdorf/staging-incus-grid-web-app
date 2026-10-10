@@ -1,0 +1,1 @@
+import{c as o}from"./BCNRx86N.js";import{g as a}from"./CemAdEB9.js";import{B as n,s as c}from"./NHA1_yN3.js";import{f as m,F as _}from"./BsvTSEf6.js";const r=o,l=e=>m(r,e);class f extends _{constructor(s,t=()=>{}){super(s,{name:"thunderpotential",baseUrl:r,classes:n,period:()=>a(c).btePeriod},t)}}export{r as BTE_BASE_URL,f as BteManager,l as bteCogUrl};
