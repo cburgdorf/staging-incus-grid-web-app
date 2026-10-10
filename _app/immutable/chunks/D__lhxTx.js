@@ -1,1 +1,0 @@
-import{P as t}from"./DGsMX-oj.js";import{g as a}from"./Br6nZnRr.js";import{F as E,s as l}from"./qAkoN0iL.js";import{f as n,F as f}from"./BGkx8KzL.js";const r=t,i=e=>n(r,e);class p extends f{constructor(s,o=()=>{}){super(s,{name:"fleet",baseUrl:r,classes:E,period:()=>a(l).fleetPeriod},o)}}export{r as FLEET_BASE_URL,p as FleetManager,i as fleetCogUrl};
