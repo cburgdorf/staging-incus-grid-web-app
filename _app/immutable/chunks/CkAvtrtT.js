@@ -1,0 +1,1 @@
+import{b as t}from"./BCNRx86N.js";import{g as a}from"./CemAdEB9.js";import{T as n,s as _}from"./D8uOXzsv.js";import{f as g,F as i}from"./CFIsQpxV.js";const s=t,p=r=>g(s,r);class u extends i{constructor(e,o=()=>{}){super(e,{name:"thunderdays",baseUrl:s,classes:n,period:()=>a(_).lightningPeriod},o)}}export{u as LightningManager,s as THUNDER_DAYS_BASE_URL,p as thunderDaysCogUrl};
