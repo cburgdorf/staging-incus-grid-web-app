@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+# The landing page and the blog are the pages meant for search; their sitemaps:
+Sitemap: https://incusgrid.com/sitemap.xml
+Sitemap: https://blog.incusgrid.com/sitemap.xml
