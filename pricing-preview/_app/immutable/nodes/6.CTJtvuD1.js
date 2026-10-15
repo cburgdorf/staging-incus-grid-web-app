@@ -1,4 +1,4 @@
-import{s as L,n as $}from"../chunks/BrUu5C8E.js";import{S as k,i as I,k as M,l as H,m as y,n as A,o as E,p as N,d as a,a as i,c as f,q as u,g as v,h,j as x}from"../chunks/CE4m-EXn.js";import{L as S}from"../chunks/BF_Go_C7.js";function O(_){let t,r=`<h2 class="text-2xl font-semibold text-ink mb-4">Information according to Portuguese Law</h2> <p><strong>IncusGrid</strong><br/>
+import{s as L,n as $}from"../chunks/BrUu5C8E.js";import{S as k,i as I,k as M,l as H,m as y,n as A,o as E,p as N,d as a,a as i,c as f,q as u,g as v,h,j as x}from"../chunks/CE4m-EXn.js";import{L as S}from"../chunks/By2GyJXK.js";function O(_){let t,r=`<h2 class="text-2xl font-semibold text-ink mb-4">Information according to Portuguese Law</h2> <p><strong>IncusGrid</strong><br/>
 			Christoph Burgdorf<br/>
 			Rua Almirante Cândido dos Reis 224<br/>
 			8800-318 Tavira<br/>
