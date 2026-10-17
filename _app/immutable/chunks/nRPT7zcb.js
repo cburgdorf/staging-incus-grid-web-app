@@ -1,1 +1,0 @@
-const s={wind:"wind-source",waves:"waves-source",thunderDays:"thunderdays-source",lightningDensity:"lightningdensity-source",thunderRisk:"thunderrisk-source",thunderPotential:"thunderpotential-source",fleet:"fleet-source"},t="cog-",n=e=>Object.values(s).includes(e)||e.startsWith(t);export{t as C,s as R,n as i};
