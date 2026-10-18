@@ -4,6 +4,12 @@
     <meta charset="utf-8" />
     <!-- The basemap comes from MapTiler: open the connection while the app code loads. -->
     <link rel="preconnect" href="https://api.maptiler.com" crossorigin />
+    <!-- Map data and the account: both connections are needed right after the app code. -->
+    <link rel="preconnect" href="https://cdn.incusgrid.com" crossorigin />
+    <link rel="preconnect" href="https://db.incusgrid.com" crossorigin />
+    <!-- The basemap style and its tile index; MapLibre would only request them once its code has loaded. -->
+    <link rel="preload" as="fetch" crossorigin="anonymous" href="https://api.maptiler.com/maps/outdoor-v2/style.json?key=0cdoIBjm8kHZGjEGavi9" />
+    <link rel="preload" as="fetch" crossorigin="anonymous" href="https://api.maptiler.com/tiles/v3/tiles.json?key=0cdoIBjm8kHZGjEGavi9" />
     <!-- The first labels (countries, seas) need these glyphs; MapLibre would only request them after the first tiles. -->
     <link rel="preload" as="fetch" crossorigin="anonymous" href="https://api.maptiler.com/fonts/Roboto%20Bold,Noto%20Sans%20Bold/0-255.pbf?key=0cdoIBjm8kHZGjEGavi9" />
     <link rel="preload" as="fetch" crossorigin="anonymous" href="https://api.maptiler.com/fonts/Roboto%20Italic,Noto%20Sans%20Italic/0-255.pbf?key=0cdoIBjm8kHZGjEGavi9" />
@@ -51,11 +57,11 @@
     <meta property="og:site_name" content="IncusGrid" />
     <meta name="twitter:card" content="summary_large_image" />
     
-		<link rel="modulepreload" href="./_app/immutable/entry/start.dIoZDSj7.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/BunQ7vEi.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/start.mNU3eRsh.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/BVP7ZSeW.js">
 		<link rel="modulepreload" href="./_app/immutable/chunks/Bn_amJ8T.js">
 		<link rel="modulepreload" href="./_app/immutable/chunks/BVEOLAUK.js">
-		<link rel="modulepreload" href="./_app/immutable/entry/app.C9G8Z6P4.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/app.pd0C7FpH.js">
 		<link rel="modulepreload" href="./_app/immutable/chunks/C1FmrZbK.js">
 		<link rel="modulepreload" href="./_app/immutable/chunks/D7lVSXvS.js">
   </head>
@@ -63,15 +69,15 @@
     <div style="display: contents">
 			<script>
 				{
-					__sveltekit_1411863 = {
+					__sveltekit_1yyy1so = {
 						base: new URL(".", location).pathname.slice(0, -1)
 					};
 
 					const element = document.currentScript.parentElement;
 
 					Promise.all([
-						import("./_app/immutable/entry/start.dIoZDSj7.js"),
-						import("./_app/immutable/entry/app.C9G8Z6P4.js")
+						import("./_app/immutable/entry/start.mNU3eRsh.js"),
+						import("./_app/immutable/entry/app.pd0C7FpH.js")
 					]).then(([kit, app]) => {
 						kit.start(app, element);
 					});
