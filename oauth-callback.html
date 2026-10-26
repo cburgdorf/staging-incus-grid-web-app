@@ -29,7 +29,9 @@
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('set', { app_surface: 'webapp' });
-      gtag('config', 'G-7Q5WFSS215');
+      // The iOS app (tauri://localhost) sends no data for Google's ad features, so it does no tracking in Apple's
+      // sense (App Tracking Transparency); see docs/ios-release.md, App Privacy.
+      gtag('config', 'G-7Q5WFSS215', location.protocol === 'tauri:' ? { allow_google_signals: false, allow_ad_personalization_signals: false } : {});
     </script>
     <script>
       // Restore status bar height on every page load (persisted by Tauri/Android)
@@ -57,11 +59,11 @@
     <meta property="og:site_name" content="IncusGrid" />
     <meta name="twitter:card" content="summary_large_image" />
     
-		<link rel="modulepreload" href="./_app/immutable/entry/start.CuHSqB69.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/Bhy7d55_.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/start.Bm2gVqP5.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/Dk_9cp_a.js">
 		<link rel="modulepreload" href="./_app/immutable/chunks/CSYp3CKo.js">
 		<link rel="modulepreload" href="./_app/immutable/chunks/CbotYk31.js">
-		<link rel="modulepreload" href="./_app/immutable/entry/app.CfQk1AfZ.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/app.b85fyHpw.js">
 		<link rel="modulepreload" href="./_app/immutable/chunks/C1FmrZbK.js">
 		<link rel="modulepreload" href="./_app/immutable/chunks/ciYF3u8i.js">
   </head>
@@ -69,15 +71,15 @@
     <div style="display: contents">
 			<script>
 				{
-					__sveltekit_1euohhy = {
+					__sveltekit_pveycd = {
 						base: new URL(".", location).pathname.slice(0, -1)
 					};
 
 					const element = document.currentScript.parentElement;
 
 					Promise.all([
-						import("./_app/immutable/entry/start.CuHSqB69.js"),
-						import("./_app/immutable/entry/app.CfQk1AfZ.js")
+						import("./_app/immutable/entry/start.Bm2gVqP5.js"),
+						import("./_app/immutable/entry/app.b85fyHpw.js")
 					]).then(([kit, app]) => {
 						kit.start(app, element);
 					});
