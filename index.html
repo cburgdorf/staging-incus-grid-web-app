@@ -14,7 +14,7 @@
     <link rel="preload" as="fetch" crossorigin="anonymous" href="https://api.maptiler.com/fonts/Roboto%20Bold,Noto%20Sans%20Bold/0-255.pbf?key=0cdoIBjm8kHZGjEGavi9" />
     <link rel="preload" as="fetch" crossorigin="anonymous" href="https://api.maptiler.com/fonts/Roboto%20Italic,Noto%20Sans%20Italic/0-255.pbf?key=0cdoIBjm8kHZGjEGavi9" />
     <link rel="preload" as="fetch" crossorigin="anonymous" href="https://api.maptiler.com/fonts/Roboto%20Medium,Noto%20Sans%20Regular/0-255.pbf?key=0cdoIBjm8kHZGjEGavi9" />
-    <!-- Google Analytics -->
+    <!-- Google Analytics, only with consent (cookie banner, src/lib/consent.ts) -->
     <script>
       // Analytics and ad pixels load once the page has loaded and the browser is idle: on slow mobile
       // connections they would otherwise compete with the app code and map data. Calls queue until then.
@@ -22,16 +22,43 @@
         var idle = function () { window.requestIdleCallback ? requestIdleCallback(load, { timeout: 4000 }) : setTimeout(load, 1000); };
         if (document.readyState === 'complete') idle(); else addEventListener('load', idle, { once: true });
       };
-      afterPageLoad(function () {
-        document.head.appendChild(Object.assign(document.createElement('script'), { async: true, src: 'https://www.googletagmanager.com/gtag/js?id=G-7Q5WFSS215' }));
-      });
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
+      // Consent Mode v2, basic: everything denied until the visitor accepts; gtag.js is not even loaded before.
+      gtag('consent', 'default', { analytics_storage: 'denied', ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied' });
       gtag('js', new Date());
       gtag('set', { app_surface: 'webapp' });
-      // The iOS app (tauri://localhost) sends no data for Google's ad features, so it does no tracking in Apple's
-      // sense (App Tracking Transparency); see docs/ios-release.md, App Privacy.
-      gtag('config', 'G-7Q5WFSS215', location.protocol === 'tauri:' ? { allow_google_signals: false, allow_ad_personalization_signals: false } : {});
+      (function () {
+        // The URL a visit arrived on (campaign parameters, gclid), so consent given later still credits the ad.
+        try { if (!sessionStorage.getItem('incus_landing')) sessionStorage.setItem('incus_landing', JSON.stringify({ url: location.href, referrer: document.referrer })); } catch (_) {}
+        var started = false;
+        // Called on load with a stored choice, and by the banner; the choice is incus_consent=1.<analytics>.<ads>.
+        window.startAnalytics = function (ads) {
+          if (location.hostname === 'tauri.localhost') return;
+          gtag('consent', 'update', { analytics_storage: 'granted', ad_storage: ads ? 'granted' : 'denied', ad_user_data: ads ? 'granted' : 'denied', ad_personalization: ads ? 'granted' : 'denied' });
+          if (started) return;
+          started = true;
+          var landing = null;
+          try { landing = JSON.parse(sessionStorage.getItem('incus_landing')); } catch (_) {}
+          gtag('config', 'G-7Q5WFSS215', landing && landing.url !== location.href ? { page_location: landing.url, page_referrer: landing.referrer } : {});
+          afterPageLoad(function () {
+            document.head.appendChild(Object.assign(document.createElement('script'), { async: true, src: 'https://www.googletagmanager.com/gtag/js?id=G-7Q5WFSS215' }));
+          });
+        };
+        var stored = /(?:^|;\s*)incus_consent=1\.([01])\.([01])(?:;|$)/.exec(document.cookie);
+        if (stored && stored[1] === '1') startAnalytics(stored[2] === '1');
+        // After a withdrawal: the services may have rewritten their cookies while the page unloaded.
+        if (stored) {
+          var unwanted = new RegExp('^(' + (stored[1] === '0' ? '_ga|_ga_.*|' : '') + (stored[2] === '0' ? '_gcl_.*|_fbp|_fbc|' : '') + ')$');
+          document.cookie.split(';').forEach(function (part) {
+            var name = part.split('=')[0].trim();
+            if (!name || !unwanted.test(name)) return;
+            ['', '; domain=' + location.hostname, '; domain=.' + location.hostname, '; domain=incusgrid.com'].forEach(function (domain) {
+              document.cookie = name + '=; path=/; max-age=0' + domain;
+            });
+          });
+        }
+      })();
     </script>
     <script>
       // Restore status bar height on every page load (persisted by Tauri/Android)
@@ -59,27 +86,27 @@
     <meta property="og:site_name" content="IncusGrid" />
     <meta name="twitter:card" content="summary_large_image" />
     
-		<link rel="modulepreload" href="/_app/immutable/entry/start.CghC8r0L.js">
-		<link rel="modulepreload" href="/_app/immutable/chunks/CyvTjMZo.js">
-		<link rel="modulepreload" href="/_app/immutable/chunks/CSYp3CKo.js">
-		<link rel="modulepreload" href="/_app/immutable/chunks/CbotYk31.js">
-		<link rel="modulepreload" href="/_app/immutable/entry/app.CsnjAMj7.js">
+		<link rel="modulepreload" href="/_app/immutable/entry/start.Du1EA05R.js">
+		<link rel="modulepreload" href="/_app/immutable/chunks/CMybx2WD.js">
+		<link rel="modulepreload" href="/_app/immutable/chunks/-Z3phDLF.js">
+		<link rel="modulepreload" href="/_app/immutable/chunks/CiRsEbaz.js">
+		<link rel="modulepreload" href="/_app/immutable/entry/app.Da-EnqzN.js">
 		<link rel="modulepreload" href="/_app/immutable/chunks/C1FmrZbK.js">
-		<link rel="modulepreload" href="/_app/immutable/chunks/ciYF3u8i.js">
+		<link rel="modulepreload" href="/_app/immutable/chunks/CYyO-rtL.js">
   </head>
   <body data-sveltekit-preload-data="hover">
     <div style="display: contents">
 			<script>
 				{
-					__sveltekit_10purox = {
+					__sveltekit_rmjldj = {
 						base: ""
 					};
 
 					const element = document.currentScript.parentElement;
 
 					Promise.all([
-						import("/_app/immutable/entry/start.CghC8r0L.js"),
-						import("/_app/immutable/entry/app.CsnjAMj7.js")
+						import("/_app/immutable/entry/start.Du1EA05R.js"),
+						import("/_app/immutable/entry/app.Da-EnqzN.js")
 					]).then(([kit, app]) => {
 						kit.start(app, element);
 					});
